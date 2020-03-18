@@ -9,10 +9,10 @@ const taskDefaultOptions = {
     left: 2,
     top: 2,
   },
-  style:{
+  style: {
     ...editorStyle.nodeStyle,
     fill: '#E7F7FE',
-    stroke:'#1890FF',
+    stroke: '#1890FF',
     cursor: 'default',
   },
   stateStyles: {
@@ -33,10 +33,10 @@ const gatewayDefaultOptions = {
     left: 2,
     top: 2,
   },
-  style:{
+  style: {
     ...editorStyle.nodeStyle,
     fill: '#E8FEFA',
-    stroke:'#13C2C2',
+    stroke: '#13C2C2',
     cursor: 'default',
   },
   stateStyles: {
@@ -57,15 +57,15 @@ const startDefaultOptions = {
     left: 6,
     top: 6,
   },
-  style:{
+  style: {
     ...editorStyle.nodeStyle,
     fill: '#FEF7E8',
-    stroke:'#FA8C16',
+    stroke: '#FA8C16',
     cursor: 'default',
   },
   stateStyles: {
     selected: {
-      fill: '#FCD49A',
+      fill: '#FEF7E8',
     },
     hover: {
       cursor: editorStyle.cursor.hoverNode,
@@ -81,15 +81,40 @@ const endDefaultOptions = {
     left: 6,
     top: 6,
   },
-  style:{
+  style: {
     ...editorStyle.nodeStyle,
     fill: '#EFF7E8',
-    stroke:'#F5222D',
+    stroke: '#F5222D',
     cursor: 'default',
   },
   stateStyles: {
     selected: {
-      fill: '#CFD49A',
+      fill: '#EFF7E8',
+    },
+    hover: {
+      cursor: editorStyle.cursor.hoverNode,
+    }
+  }
+};
+
+const ctrlDefaultOptions = {
+  icon: null,
+  iconStyle: {
+    width: 18,
+    height: 18,
+    left: 6,
+    top: 6,
+  },
+  style: {
+    ...editorStyle.nodeStyle,
+    fill: '#eee',
+    stroke: '#ccc',
+    cursor: 'default',
+    radius: 22
+  },
+  stateStyles: {
+    selected: {
+      fill: '#eee',
     },
     hover: {
       cursor: editorStyle.cursor.hoverNode,
@@ -105,10 +130,10 @@ const catchDefaultOptions = {
     left: -10,
     top: -8,
   },
-  style:{
+  style: {
     ...editorStyle.nodeStyle,
     fill: '#FEF7E8',
-    stroke:'#FA8C16',
+    stroke: '#FA8C16',
     cursor: 'default',
   },
   stateStyles: {
@@ -121,14 +146,14 @@ const catchDefaultOptions = {
   }
 };
 
-export default function(G6) {
+export default function (G6) {
   G6.registerNode('task-node', {
     shapeType: 'rect',
-    options:{
+    options: {
       ...taskDefaultOptions
     },
     getShapeStyle(cfg) {
-      cfg.size = [80, 44];
+      cfg.size = [180, 44];
       const width = cfg.size[0];
       const height = cfg.size[1];
       const style = {
@@ -144,7 +169,7 @@ export default function(G6) {
   G6.registerNode('gateway-node', {
     shapeType: 'path',
     labelPosition: 'bottom',
-    options:{
+    options: {
       ...gatewayDefaultOptions
     },
     getShapeStyle(cfg) {
@@ -185,7 +210,7 @@ export default function(G6) {
           stroke: this.options.style.stroke,
         }
       });
-      this.runAnimate(cfg,group);
+      this.runAnimate(cfg, group);
     },
   }, 'gateway-node');
   G6.registerNode('parallel-gateway-node', {
@@ -204,7 +229,7 @@ export default function(G6) {
           stroke: this.options.style.stroke,
         }
       });
-      this.runAnimate(cfg,group);
+      this.runAnimate(cfg, group);
     },
   }, 'gateway-node');
   G6.registerNode('inclusive-gateway-node', {
@@ -218,7 +243,7 @@ export default function(G6) {
           stroke: this.options.style.stroke,
         }
       });
-      this.runAnimate(cfg,group);
+      this.runAnimate(cfg, group);
     },
   }, 'gateway-node');
   G6.registerNode('start-node', {
@@ -228,7 +253,7 @@ export default function(G6) {
       ...startDefaultOptions
     },
     getShapeStyle(cfg) {
-      cfg.size = [30, 30];
+      cfg.size = [40, 40];
       const width = cfg.size[0];
       const style = {
         x: 0,
@@ -242,7 +267,7 @@ export default function(G6) {
       group.icon = group.addShape('path', {
         attrs: {
           path: [
-            ['M', -4 , -6],
+            ['M', -4, -6],
             ['L', 6, 0],
             ['L', -4, 6],
             ['Z'] // close
@@ -254,8 +279,8 @@ export default function(G6) {
     },
     getAnchorPoints() {
       return [
-        [0.5, 0], // top
-        [1, 0.5], // right
+        // [0.5, 0], // top
+        // [1, 0.5], // right
         [0.5, 1], // bottom
       ]
     }
@@ -267,7 +292,7 @@ export default function(G6) {
       ...endDefaultOptions
     },
     getShapeStyle(cfg) {
-      cfg.size = [30, 30];
+      cfg.size = [40, 40];
       const width = cfg.size[0];
       const style = {
         x: 0,
@@ -281,7 +306,7 @@ export default function(G6) {
       group.icon = group.addShape('path', {
         attrs: {
           path: [
-            ['M', -4 , -4],
+            ['M', -4, -4],
             ['L', 4, -4],
             ['L', 4, 4],
             ['L', -4, 4],
@@ -295,8 +320,62 @@ export default function(G6) {
     getAnchorPoints() {
       return [
         [0.5, 0], // top
+        // [0.5, 1], // bottom
+        // [0, 0.5], // left
+      ]
+    }
+  }, 'base-node');
+  G6.registerNode('start-node2', {
+    shapeType: 'rect',
+    label: '开始',
+    options: {
+      ...ctrlDefaultOptions
+    },
+    getShapeStyle(cfg) {
+      cfg.size = [80, 44];
+      const width = cfg.size[0];
+      const height = cfg.size[1];
+      const style = {
+        x: 0 - width / 2,
+        y: 0 - height / 2,
+        width,
+        height,
+        ...this.options.style,
+      };
+      return style;
+    },
+    getAnchorPoints() {
+      return [
+        // [0.5, 0], // top
         [0.5, 1], // bottom
-        [0, 0.5], // left
+        // [0, 0.5], // left
+      ]
+    }
+  }, 'base-node');
+  G6.registerNode('end-node2', {
+    shapeType: 'rect',
+    label: '开始',
+    options: {
+      ...ctrlDefaultOptions
+    },
+    getShapeStyle(cfg) {
+      cfg.size = [80, 44];
+      const width = cfg.size[0];
+      const height = cfg.size[1];
+      const style = {
+        x: 0 - width / 2,
+        y: 0 - height / 2,
+        width,
+        height,
+        ...this.options.style,
+      };
+      return style;
+    },
+    getAnchorPoints() {
+      return [
+        [0.5, 0], // top
+        // [0.5, 1], // bottom
+        // [0, 0.5], // left
       ]
     }
   }, 'base-node');
@@ -312,10 +391,10 @@ export default function(G6) {
       const height = cfg.size[1];
       const style = {
         path: [
-          ['M', 0 , -height/3],
-          ['L', width/2, -height/3],
-          ['L', 0, height/3*2],
-          ['L', -width/2, -height/3],
+          ['M', 0, -height / 3],
+          ['L', width / 2, -height / 3],
+          ['L', 0, height / 3 * 2],
+          ['L', -width / 2, -height / 3],
           ['Z'] // close
         ],
         ...this.options.style,
@@ -332,7 +411,7 @@ export default function(G6) {
     }
   }, 'base-node');
   G6.registerNode('user-task-node', {
-    options: deepMix({},taskDefaultOptions,{
+    options: deepMix({}, taskDefaultOptions, {
       icon: require('../assets/icons/flow/icon_user.svg'),
       style: {
         fill: '#E7F7FE',
@@ -346,7 +425,7 @@ export default function(G6) {
     }),
   }, 'task-node');
   G6.registerNode('script-task-node', {
-    options: deepMix({},taskDefaultOptions,{
+    options: deepMix({}, taskDefaultOptions, {
       icon: require('../assets/icons/flow/icon_script.svg'),
       style: {
         fill: '#FFF7E6',
@@ -360,7 +439,7 @@ export default function(G6) {
     }),
   }, 'task-node');
   G6.registerNode('java-task-node', {
-    options: deepMix({},taskDefaultOptions,{
+    options: deepMix({}, taskDefaultOptions, {
       icon: require('../assets/icons/flow/icon_java.svg'),
       style: {
         fill: '#FFF1F0',
@@ -374,7 +453,7 @@ export default function(G6) {
     }),
   }, 'task-node');
   G6.registerNode('mail-task-node', {
-    options: deepMix({},taskDefaultOptions,{
+    options: deepMix({}, taskDefaultOptions, {
       icon: require('../assets/icons/flow/icon_mail.svg'),
       style: {
         fill: '#F6FFED',
@@ -388,7 +467,7 @@ export default function(G6) {
     }),
   }, 'task-node');
   G6.registerNode('receive-task-node', {
-    options: deepMix({},taskDefaultOptions,{
+    options: deepMix({}, taskDefaultOptions, {
       icon: require('../assets/icons/flow/icon_receive.svg'),
       style: {
         fill: '#FFF0F6',
@@ -402,24 +481,24 @@ export default function(G6) {
     }),
   }, 'task-node');
   G6.registerNode('timer-start-node', {
-    options: deepMix({},startDefaultOptions,{icon: require('../assets/icons/flow/icon_timer.svg')}),
-    afterDraw(cfg, group) { this.runAnimate(cfg,group) },
+    options: deepMix({}, ctrlDefaultOptions, { icon: require('../assets/icons/flow/icon_timer.svg') }),
+    afterDraw(cfg, group) { this.runAnimate(cfg, group) },
   }, 'start-node');
   G6.registerNode('message-start-node', {
-    options: deepMix({},startDefaultOptions,{icon: require('../assets/icons/flow/icon_message.svg')}),
-    afterDraw(cfg, group) { this.runAnimate(cfg,group) },
+    options: deepMix({}, ctrlDefaultOptions, { icon: require('../assets/icons/flow/icon_message.svg') }),
+    afterDraw(cfg, group) { this.runAnimate(cfg, group) },
   }, 'start-node');
   G6.registerNode('signal-start-node', {
-    options: deepMix({},startDefaultOptions,{icon: require('../assets/icons/flow/icon_signal.svg')}),
-    afterDraw(cfg, group) { this.runAnimate(cfg,group) },
+    options: deepMix({}, ctrlDefaultOptions, { icon: require('../assets/icons/flow/icon_signal.svg') }),
+    afterDraw(cfg, group) { this.runAnimate(cfg, group) },
   }, 'start-node');
   G6.registerNode('timer-catch-node', {
-    options: deepMix({},catchDefaultOptions,{icon: require('../assets/icons/flow/icon_timer.svg')}),
+    options: deepMix({}, catchDefaultOptions, { icon: require('../assets/icons/flow/icon_timer.svg') }),
   }, 'catch-node');
   G6.registerNode('signal-catch-node', {
-    options: deepMix({},catchDefaultOptions,{icon: require('../assets/icons/flow/icon_signal.svg')}),
+    options: deepMix({}, catchDefaultOptions, { icon: require('../assets/icons/flow/icon_signal.svg') }),
   }, 'catch-node');
   G6.registerNode('message-catch-node', {
-    options: deepMix({},catchDefaultOptions,{icon: require('../assets/icons/flow/icon_message.svg')}),
+    options: deepMix({}, catchDefaultOptions, { icon: require('../assets/icons/flow/icon_message.svg') }),
   }, 'catch-node');
 }

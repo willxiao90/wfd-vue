@@ -2,21 +2,21 @@ import editorStyle from "../util/defaultStyle";
 import createAnchor from '../item/anchor';
 
 const dashArray = [
-  [0,1],
-  [0,2],
-  [1,2],
-  [0,1,1,2],
-  [0,2,1,2],
-  [1,2,1,2],
-  [2,2,1,2],
-  [3,2,1,2],
-  [4,2,1,2]
+  [0, 1],
+  [0, 2],
+  [1, 2],
+  [0, 1, 1, 2],
+  [0, 2, 1, 2],
+  [1, 2, 1, 2],
+  [2, 2, 1, 2],
+  [3, 2, 1, 2],
+  [4, 2, 1, 2]
 ];
 const interval = 9;
 const lineDash = [4, 2, 1, 2];
-export default function(G6) {
+export default function (G6) {
   G6.registerNode('base-node', {
-    options:{
+    options: {
       icon: null,
       iconStyle: {
         width: 14,
@@ -24,9 +24,9 @@ export default function(G6) {
         left: 0,
         top: 0,
       },
-      style:{
+      style: {
         fill: '#f9f9f9',
-        stroke:'#bbb',
+        stroke: '#bbb',
         cursor: 'default',
       },
       stateStyles: {
@@ -41,7 +41,7 @@ export default function(G6) {
     drawAnchor(group) {
       const bbox = group.get('children')[0].getBBox();
       this.getAnchorPoints().forEach((p, i) => {
-        const anchor = createAnchor(i,{
+        const anchor = createAnchor(i, {
           x: bbox.minX + bbox.width * p[0],
           y: bbox.minY + bbox.height * p[1]
         }, group);
@@ -64,21 +64,21 @@ export default function(G6) {
           ...style,
         }
       });
-      if(this.options.icon){
+      if (this.options.icon) {
         let attrs = {
           x: style.x + this.options.iconStyle.left,
           y: style.y + this.options.iconStyle.top,
           width: this.options.iconStyle.width,
           height: this.options.iconStyle.height,
         };
-        if(shapeType === 'circle'){
+        if (shapeType === 'circle') {
           attrs = {
-            x: style.x- style.r + this.options.iconStyle.left,
+            x: style.x - style.r + this.options.iconStyle.left,
             y: style.y - style.r + this.options.iconStyle.top,
             width: this.options.iconStyle.width,
             height: this.options.iconStyle.height,
           }
-        }else if(shapeType === 'path'){
+        } else if (shapeType === 'path') {
           attrs = {
             x: this.options.iconStyle.left,
             y: this.options.iconStyle.top,
@@ -88,11 +88,11 @@ export default function(G6) {
         }
         group.icon = group.addShape('image', {
           attrs: {
-            img:this.options.icon,
+            img: this.options.icon,
             ...attrs,
           }
         });
-        if(cfg.hideIcon){
+        if (cfg.hideIcon) {
           group.icon.hide();
         }
       }
@@ -132,11 +132,11 @@ export default function(G6) {
         const text = group.getChildByIndex(1);
         if (value) {
           rect.attr('cursor', this.options.stateStyles.hover.cursor);
-          if(text)
+          if (text)
             text.attr('cursor', this.options.stateStyles.hover.cursor);
         } else {
           rect.attr('cursor', this.options.style.cursor);
-          if(text)
+          if (text)
             text.attr('cursor', this.options.style.cursor);
         }
       }
@@ -144,13 +144,13 @@ export default function(G6) {
     getAnchorPoints() {
       return [
         [0.5, 0], // top
-        [1, 0.5], // right
+        // [1, 0.5], // right
         [0.5, 1], // bottom
-        [0, 0.5], // left
+        // [0, 0.5], // left
       ]
     },
-    runAnimate(cfg, group){
-      if(cfg.active){
+    runAnimate(cfg, group) {
+      if (cfg.active) {
         let totalArray = [];
         let index = 0;
         const shape = group.getFirst();
@@ -170,13 +170,13 @@ export default function(G6) {
       }
     },
     afterDraw(cfg, group) {
-      this.runAnimate(cfg,group);
+      this.runAnimate(cfg, group);
     },
     afterUpdate(cfg, group) {
       const icon = group.get('group').icon;
-      if(cfg.hideIcon && icon && icon.get('visible')){
+      if (cfg.hideIcon && icon && icon.get('visible')) {
         icon.hide();
-      }else if(!cfg.hideIcon && icon && !icon.get('visible')){
+      } else if (!cfg.hideIcon && icon && !icon.get('visible')) {
         icon.show();
       }
     }
