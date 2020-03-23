@@ -155,9 +155,14 @@ export default {
 .detailPanel {
   height: 100%;
   background: #f0f2f5;
-  flex: 0 0 auto;
-  float: left;
-  width: 20%;
+  // flex: 0 0 auto;
+  // float: left;
+  // width: 20%;
+  width: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
   border-right: 1px solid #e9e9e9;
   border-bottom: 1px solid #e9e9e9;
   .panelTitle {

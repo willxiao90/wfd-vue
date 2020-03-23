@@ -3,7 +3,7 @@
     <el-button
       size="small"
       style="float:right;margin-top:6px;margin-right:6px;"
-      @click="()=>{this.$refs['wfd'].graph.saveXML()}"
+      @click="onExport"
     >导出XML</el-button>
     <el-button
       size="small"
@@ -104,7 +104,12 @@ export default {
       // ]
     };
   },
-  mounted() {}
+  methods: {
+    onExport() {
+      const json = this.$refs["wfd"].graph.save();
+      console.log(json);
+    }
+  }
 };
 </script>
 

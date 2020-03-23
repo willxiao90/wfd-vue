@@ -1,6 +1,6 @@
 export default {
   'label': '任务名称',
-  'id': "任务ID",
+  'jobId': "任务ID",
   'hideIcon': '隐藏图标',
   'userTask': '审批节点',
   'userTask.assignType': '指派类型',

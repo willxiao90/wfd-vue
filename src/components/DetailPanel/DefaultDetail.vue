@@ -15,12 +15,12 @@
                          :value="!!model.hideIcon">{{i18n['hideIcon']}}</el-checkbox>
     </div>-->
     <div class="panelRow">
-      <div>{{i18n['id']}}：</div>
+      <div>{{i18n['jobId']}}：</div>
       <el-input
         style="width:90%; font-size:12px"
         :disabled="readOnly"
-        :value="model.id"
-        @input="(value) => {onChange('id', value)}"
+        :value="model.jobId"
+        @input="(value) => {onChange('jobId', value)}"
       />
     </div>
   </div>

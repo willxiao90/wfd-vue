@@ -3,33 +3,33 @@
     <el-collapse v-model="activeNames">
       <el-collapse-item :title="i18n['ctrl']" name="1">
         <img
-          data-item="{clazz:'start',size:'30*30',label:''}"
+          data-item="{clazz:'start',size:'40*40',label:''}"
           :src="require('../assets/flow/start.svg')"
-          style="width:42px;height:42px"
+          style="width:40px;height:40px"
         />
         <div>{{i18n['startEvent']}}</div>
         <img
-          data-item="{clazz:'end',size:'30*30',label:''}"
+          data-item="{clazz:'end',size:'40*40',label:''}"
           :src="require('../assets/flow/end.svg')"
-          style="width:42px;height:42px"
+          style="width:40px;height:40px"
         />
         <div>{{i18n['endEvent']}}</div>
         <!-- <img
           data-item="{clazz:'timerStart',size:'30*30',label:''}"
           :src="require('../assets/flow/timer-start.svg')"
-          style="width:42px;height:42px"
+          style="width:40px;height:40px"
         />
         <div>{{i18n['timerEvent']}}</div>-->
         <!-- <img
           data-item="{clazz:'messageStart',size:'30*30',label:''}"
           :src="require('../assets/flow/message-start.svg')"
-          style="width:42px;height:42px"
+          style="width:40px;height:40px"
         />
         <div>{{i18n['messageEvent']}}</div>-->
         <!-- <img
           data-item="{clazz:'signalStart',size:'30*30',label:''}"
           :src="require('../assets/flow/signal-start.svg')"
-          style="width:42px;height:42px"
+          style="width:40px;height:40px"
         />
         <div>{{i18n['signalEvent']}}</div>-->
       </el-collapse-item>
@@ -121,17 +121,23 @@ export default {
     return {
       activeNames: ["1", "2"],
       userTaskData:
-        "{clazz:'userTask',size:'80*44',label:'" + this.i18n["userTask"] + "'}",
+        "{clazz:'userTask',size:'180*44',label:'" +
+        this.i18n["userTask"] +
+        "'}",
       scriptTaskData:
-        "{clazz:'scriptTask',size:'80*44',label:'" +
+        "{clazz:'scriptTask',size:'180*44',label:'" +
         this.i18n["scriptTask"] +
         "'}",
       javaTaskData:
-        "{clazz:'javaTask',size:'80*44',label:'" + this.i18n["javaTask"] + "'}",
+        "{clazz:'javaTask',size:'180*44',label:'" +
+        this.i18n["javaTask"] +
+        "'}",
       mailTaskData:
-        "{clazz:'mailTask',size:'80*44',label:'" + this.i18n["mailTask"] + "'}",
+        "{clazz:'mailTask',size:'180*44',label:'" +
+        this.i18n["mailTask"] +
+        "'}",
       receiveTaskData:
-        "{clazz:'receiveTask',size:'80*44',label:'" +
+        "{clazz:'receiveTask',size:'180*44',label:'" +
         this.i18n["receiveTask"] +
         "'}"
     };
@@ -141,8 +147,9 @@ export default {
 
 <style lang="scss" >
 .itemPanel {
-  float: left;
-  width: 10%;
+  // float: left;
+  // width: 10%;
+  width: 102px;
   background: #f0f2f5;
   overflow-y: auto;
   border-left: 1px solid #e9e9e9;
@@ -151,6 +158,7 @@ export default {
     width: 92px;
     height: 96px;
     padding: 4px;
+    margin-top: 5px;
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 2px;
     &:hover {
@@ -180,6 +188,12 @@ export default {
         border-top: 0;
         background: #f0f2f5;
         text-align: center;
+
+        .el-collapse-item__content {
+          & > div {
+            margin-top: -8px;
+          }
+        }
       }
     }
   }

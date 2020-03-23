@@ -1,7 +1,7 @@
 <template>
   <div class="root">
     <ToolbarPanel ref="toolbar" v-if="!isView" />
-    <div style="display: flex">
+    <div style="display: flex; position: relative">
       <ItemPanel ref="addItemPanel" v-if="!isView" :height="height" />
       <div
         ref="canvas"
@@ -10,7 +10,7 @@
       ></div>
       <DetailPanel
         ref="detailPanel"
-        v-if="!isView"
+        v-if="!isView && showDetail"
         :height="height"
         :model="selectedModel"
         :readOnly="mode !== 'edit'"
@@ -112,6 +112,15 @@ export default {
           }
         }
       }
+    }
+  },
+  computed: {
+    showDetail() {
+      const whiteList = ["", "process", "start", "end"];
+      return (
+        this.selectedModel.clazz &&
+        whiteList.indexOf(this.selectedModel.clazz) === -1
+      );
     }
   },
   methods: {
@@ -229,10 +238,12 @@ export default {
   display: block;
 }
 .canvasPanel {
-  flex: 0 0 auto;
-  float: left;
-  width: 70%;
+  // flex: 0 0 auto;
+  flex: 1 1 auto;
+  // float: left;
+  // width: 70%;
   background-color: #fff;
   border-bottom: 1px solid #e9e9e9;
+  border-right: 1px solid #e9e9e9;
 }
 </style>

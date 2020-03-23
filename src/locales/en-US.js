@@ -1,6 +1,6 @@
 export default {
   'label': 'Label',
-  'taskId': "ID",
+  'jobId': "ID",
   'hideIcon': 'Hide Icon',
   'userTask': 'Spark',
   'userTask.assignType': 'Assign Type',
