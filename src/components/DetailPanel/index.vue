@@ -13,12 +13,14 @@
       :model="model"
       :onChange="onChange"
       :readOnly="readOnly"
+      :jobs="jobs"
     />
     <JavaTaskDetail
       v-else-if="model.clazz === 'javaTask'"
       :model="model"
       :onChange="onChange"
       :readOnly="readOnly"
+      :jobs="jobs"
     />
     <ReceiveTaskDetail
       v-else-if="model.clazz === 'receiveTask'"
@@ -31,6 +33,7 @@
       :model="model"
       :onChange="onChange"
       :readOnly="readOnly"
+      :jobs="jobs"
     />
     <TimerEventDetail
       v-else-if="model.clazz === 'timerStart' || model.clazz === 'timerCatch'"
@@ -129,6 +132,10 @@ export default {
       default: () => []
     },
     groups: {
+      type: Array,
+      default: () => []
+    },
+    jobs: {
       type: Array,
       default: () => []
     },

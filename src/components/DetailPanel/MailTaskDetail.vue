@@ -2,7 +2,12 @@
   <div :data-clazz="model.clazz">
     <div class="panelTitle">{{i18n['mailTask']}}</div>
     <div class="panelBody">
-      <DefaultDetail :model="model" :onChange="onChange" :readOnly="readOnly" />
+      <DefaultDetail
+        :model="model"
+        :onChange="onChange"
+        :readOnly="readOnly"
+        :jobs="jobs.filter(v => v.type === 'spark')"
+      />
       <!-- <div class="panelRow">
                 <div>{{i18n['mailTask.to']}}：</div>
                 <el-input style="width:90%; font-size:12px"
@@ -48,6 +53,10 @@ export default {
     readOnly: {
       type: Boolean,
       default: false
+    },
+    jobs: {
+      type: Array,
+      default: () => []
     }
   }
 };

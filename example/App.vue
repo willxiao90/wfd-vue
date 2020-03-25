@@ -10,7 +10,7 @@
       style="float:right;margin-top:6px;margin-right:6px;"
       @click="()=>{this.modalVisible=true}"
     >查看流程图</el-button>
-    <wfd-vue ref="wfd" :data="demoData" :height="600" :lang="lang" />
+    <wfd-vue ref="wfd" :data="demoData" :jobs="jobs" :height="600" :lang="lang" />
     <el-dialog title="查看流程图" :visible.sync="modalVisible" width="60%">
       <wfd-vue ref="wfd" :data="demoData" :height="300" isView />
     </el-dialog>
@@ -91,12 +91,17 @@ export default {
             clazz: "flow"
           }
         ]
-      }
+      },
+      jobs: [
+        { id: "123", name: "123", type: "java" },
+        { id: "456", name: "456", type: "java" },
+        { id: "789", name: "789", type: "java" }
+      ]
       // candidateUsers: [
       //   { id: "1", name: "Tom" },
       //   { id: "2", name: "Steven" },
       //   { id: "3", name: "Andy" }
-      // ],
+      // ]
       // candidateGroups: [
       //   { id: "1", name: "Manager" },
       //   { id: "2", name: "Security" },

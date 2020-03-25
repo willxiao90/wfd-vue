@@ -3,13 +3,13 @@
     <el-collapse v-model="activeNames">
       <el-collapse-item :title="i18n['ctrl']" name="1">
         <img
-          data-item="{clazz:'start',size:'40*40',label:''}"
+          data-item="{clazz:'start',size:'40*40',label:'begin',id:'begin',jobId:'begin'}"
           :src="require('../assets/flow/start.svg')"
           style="width:40px;height:40px"
         />
         <div>{{i18n['startEvent']}}</div>
         <img
-          data-item="{clazz:'end',size:'40*40',label:''}"
+          data-item="{clazz:'end',size:'40*40',label:'end',id:'end',jobId:'end'}"
           :src="require('../assets/flow/end.svg')"
           style="width:40px;height:40px"
         />

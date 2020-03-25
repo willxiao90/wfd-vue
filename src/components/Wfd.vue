@@ -16,6 +16,7 @@
         :readOnly="mode !== 'edit'"
         :users="users"
         :groups="groups"
+        :jobs="jobs"
         :signalDefs="processModel.signalDefs"
         :messageDefs="processModel.messageDefs"
         :onChange="(key,val)=>{onItemCfgChange(key,val)}"
@@ -77,6 +78,10 @@ export default {
       default: () => []
     },
     groups: {
+      type: Array,
+      default: () => []
+    },
+    jobs: {
       type: Array,
       default: () => []
     }

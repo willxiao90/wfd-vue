@@ -1,5 +1,5 @@
 export default {
-  'label': '任务名称',
+  'label': '标题',
   'jobId': "任务ID",
   'hideIcon': '隐藏图标',
   'userTask': '审批节点',

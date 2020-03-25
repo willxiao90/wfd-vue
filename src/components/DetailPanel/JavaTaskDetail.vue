@@ -2,8 +2,13 @@
   <div :data-clazz="model.clazz">
     <div class="panelTitle">{{i18n['javaTask']}}</div>
     <div class="panelBody">
-      <DefaultDetail :model="model" :onChange="onChange" :readOnly="readOnly" />
-      <div class="panelRow">
+      <DefaultDetail
+        :model="model"
+        :onChange="onChange"
+        :readOnly="readOnly"
+        :jobs="jobs.filter(v => v.type === 'java')"
+      />
+      <!-- <div class="panelRow">
         <div>{{i18n['javaTask.javaClass']}}：</div>
         <el-input
           style="width:90%; font-size:12px"
@@ -11,7 +16,7 @@
           :value="model.javaClass"
           @input="(value) => {onChange('javaClass', value)}"
         />
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
@@ -34,6 +39,10 @@ export default {
     readOnly: {
       type: Boolean,
       default: false
+    },
+    jobs: {
+      type: Array,
+      default: () => []
     }
   }
 };
