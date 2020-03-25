@@ -93,9 +93,9 @@ export default {
         ]
       },
       jobs: [
-        { id: "123", name: "123", type: "java" },
-        { id: "456", name: "456", type: "java" },
-        { id: "789", name: "789", type: "java" }
+        { id: "123", name: "task123", type: "java" },
+        { id: "456", name: "t456", type: "java" },
+        { id: "789", name: "t789", type: "java" }
       ]
       // candidateUsers: [
       //   { id: "1", name: "Tom" },

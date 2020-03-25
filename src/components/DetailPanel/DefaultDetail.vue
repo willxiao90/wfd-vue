@@ -30,8 +30,6 @@
         placeholder="请选择"
         :disabled="readOnly"
         :value="model.jobId"
-        :filterable="true"
-        :filter-method="(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0"
         @change="onJobChange"
       >
         <el-option v-for="item in jobs" :key="item.id" :label="item.name" :value="item.id" />
