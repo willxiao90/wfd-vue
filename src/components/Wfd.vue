@@ -103,7 +103,7 @@ export default {
     };
   },
   watch: {
-    data(oldData, newData) {
+    data(newData, oldData) {
       if (oldData !== newData) {
         if (this.graph) {
           this.graph.changeData(this.initShape(newData));
@@ -121,7 +121,7 @@ export default {
   },
   computed: {
     showDetail() {
-      const whiteList = ["", "process", "start", "end"];
+      const whiteList = ["", "process", "start", "end", "flow"];
       return (
         this.selectedModel.clazz &&
         whiteList.indexOf(this.selectedModel.clazz) === -1

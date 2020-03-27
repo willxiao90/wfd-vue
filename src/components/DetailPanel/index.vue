@@ -61,12 +61,12 @@
       :onChange="onChange"
       :readOnly="readOnly"
     />
-    <FlowDetail
+    <!-- <FlowDetail
       v-else-if="model.clazz === 'flow'"
       :model="model"
       :onChange="onChange"
       :readOnly="readOnly"
-    />
+    />-->
     <!-- <StartEventDetail
       v-else-if="model.clazz === 'start'"
       :model="model"
