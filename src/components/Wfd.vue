@@ -104,19 +104,19 @@ export default {
   },
   watch: {
     data(newData, oldData) {
-      if (oldData !== newData) {
-        if (this.graph) {
-          this.graph.changeData(this.initShape(newData));
-          this.graph.setMode(this.mode);
-          this.graph.emit("canvas:click");
-          if (this.cmdPlugin) {
-            this.cmdPlugin.initPlugin(this.graph);
-          }
-          if (this.isView) {
-            this.graph.fitView(5);
-          }
+      // if (oldData !== newData) {
+      if (this.graph) {
+        this.graph.changeData(this.initShape(newData));
+        this.graph.setMode(this.mode);
+        this.graph.emit("canvas:click");
+        if (this.cmdPlugin) {
+          this.cmdPlugin.initPlugin(this.graph);
+        }
+        if (this.isView) {
+          this.graph.fitView(5);
         }
       }
+      // }
     }
   },
   computed: {
