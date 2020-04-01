@@ -227,7 +227,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.demoData = this.demoData1;
-    }, 2000);
+    }, 1000);
   },
   methods: {
     onExport() {

@@ -106,7 +106,10 @@ export default {
     data(newData, oldData) {
       // if (oldData !== newData) {
       if (this.graph) {
-        this.graph.changeData(this.initShape(newData));
+        // this.graph.changeData(this.initShape(newData));
+        this.graph.clear();
+        this.graph.data(this.initShape(newData));
+        this.graph.render();
         this.graph.setMode(this.mode);
         this.graph.emit("canvas:click");
         if (this.cmdPlugin) {
